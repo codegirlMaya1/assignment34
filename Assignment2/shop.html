@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        .cart-item { display: flex; justify-content: space-between; }
+        .cart-item button { margin-left: 10px; }
+        body{
+            background-color: blueviolet;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            color: aliceblue;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shopping Cart</h1>
+    <div>
+        <button onclick="addItem('Tablet', 150)">Add Graystone Tablet ($150)</button>
+        <button onclick="addItem('Bluetooth', 175)">Add Premier Bluetooth Speaker ($175)</button>
+        <button onclick="addItem('Gift Card', 50)">Add Gift Card ($50)</button>
+      
+    </div>
+
+    <div>
+        
+        <button onclick="addItem('Smartwatch', 144.)">Add Smart Watch ($144.00)</button>
+        <button onclick="addItem('Smart Tv', 750)">Add Smart Tv ($750.00)</button>
+        <button onclick="addItem('Gamepad', 125)">Add Gamepad ($125.00)</button>
+    </div>
+    <h2>Cart</h2>
+    <div id="cart"></div>
+    <h3> Finished Shopping?</h3>
+    <h3> Checkout in the amount of</h3>
+    
+    <h3>Total: $<span id="total">0.00</span></h3>
+
+   
+    <form action="checkout.html">
+        <input type="submit" value="Checkout" />
+    </form>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function addItem(name, price) {
+            cart.push({ name, price });
+            updateCart();
+        }
+
+        function deleteItem(index) {
+            total -= cart[index].price;
+            cart.splice(index, 1);
+            updateCart();
+        }
+
+        function updateCart() {
+            const cartDiv = document.getElementById('cart');
+            cartDiv.innerHTML = '';
+            total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                const itemDiv = document.createElement('div');
+                itemDiv.className = 'cart-item';
+                itemDiv.innerHTML = `${item.name} - $${item.price.toFixed(2)} <button onclick="deleteItem(${index})">Delete</button>`;
+                cartDiv.appendChild(itemDiv);
+            });
+
+            document.getElementById('total').innerText = total.toFixed(2);
+        }
+    </script>
+</body>
+</html>

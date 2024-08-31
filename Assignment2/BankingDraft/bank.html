@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Banking Draft</title>
+    <style>
+        header{
+            background-color: blue;
+            color: white;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+        body{
+            background: linear-gradient(to right, blue, white, red);
+        
+            color: white;
+        }
+        button{
+            background-color: white; /* Green */
+            border: none;
+            color: black;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container">
+              <h1 class="display-4">American Savings United</h1>
+              <p class="lead">Secure Online Banking Portal</p>
+            </div>
+          </div>
+    </header>
+    <div>
+        <h2>Account Balance: $<span id="balance">0</span></h2>
+    </div>
+    <div>
+        <h3>Deposit</h3>
+        <input type="number" id="deposit-amount" placeholder="Enter deposit amount">
+        <button onclick="deposit()">Deposit</button>
+    </div>
+    <div>
+        <h3>Withdraw</h3>
+        <input type="number" id="withdraw-amount" placeholder="Enter withdrawal amount">
+        <button onclick="withdraw()">Withdraw</button>
+    </div>
+
+    <script src="script1.js"></script>
+</body>
+</html>
